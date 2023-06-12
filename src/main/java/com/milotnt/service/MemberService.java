@@ -5,8 +5,8 @@ import com.milotnt.pojo.Member;
 import java.util.List;
 
 /**
- * @author ZhangMing [1157038410@qq.com]
- * @date 2021/8/11
+ * @author JinDunChao [2110925527@qq.com]
+ * @date 2023.6.12
  */
 
 public interface MemberService {
@@ -20,9 +20,14 @@ public interface MemberService {
     //根据会员账号修改会员信息
     Boolean updateMemberByMemberAccount(Member member);
 
+    //查询会员账号密码（注册）
+    Member userRegister(Member member);
+
     //查询会员账号密码（登录）
     Member userLogin(Member member);
     //Member selectByAccountAndPassword(Member member);
+
+
 
     //根据会员账号删除会员信息
     Boolean deleteByMemberAccount(Integer memberAccount);
@@ -32,5 +37,6 @@ public interface MemberService {
 
     //根据会员账号查询会员
     List<Member> selectByMemberAccount(Integer memberAccount);
+
 
 }

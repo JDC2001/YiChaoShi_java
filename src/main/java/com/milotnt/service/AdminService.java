@@ -3,8 +3,8 @@ package com.milotnt.service;
 import com.milotnt.pojo.Admin;
 
 /**
- * @author ZhangMing [1157038410@qq.com]
- * @date 2021/8/11
+ * @author JinDunChao [2110925527@qq.com]
+ * @date 2023.6.12
  */
 
 public interface AdminService {

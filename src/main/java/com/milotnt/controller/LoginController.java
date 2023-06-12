@@ -12,10 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
-
 /**
- * @author ZhangMing [1157038410@qq.com]
- * @date 2021/8/20
+ * @author JinDunChao [2110925527@qq.com]
+ * @date 2023.6.12
  */
 
 @Controller
@@ -30,10 +29,18 @@ public class LoginController {
     @Autowired
     private EquipmentService equipmentService;
 
+
+    //这里是页面跳转的代码
     //主页、跳转管理员登录页面
     @RequestMapping("/")
     public String toAdminLogin() {
         return "adminLogin";
+    }
+
+    //主页、跳转会员注册页面
+    @RequestMapping("/toUserRegister")
+    public String toUseRegister() {
+        return "userRegister";
     }
 
     //跳转会员登录页面
@@ -41,6 +48,7 @@ public class LoginController {
     public String toUserLogin() {
         return "userLogin";
     }
+
 
     //管理员登录
     @RequestMapping("/adminLogin")
@@ -77,6 +85,19 @@ public class LoginController {
     @RequestMapping("/userLogin")
     public String userLogin(Member member, Model model, HttpSession session) {
         Member member1 = memberService.userLogin(member);
+        if (member1 != null) {
+            model.addAttribute("member", member1);
+            session.setAttribute("user", member1);
+            return "userMain";
+        }
+        model.addAttribute("msg", "您输入的账号或密码有误，请重新输入!");
+        return "userLogin";
+    }
+
+    //会员注册
+    @RequestMapping("/userRegister")
+    public String userRegister(Member member, Model model, HttpSession session) {
+        Member member1 = memberService.userRegister(member);
         if (member1 != null) {
             model.addAttribute("member", member1);
             session.setAttribute("user", member1);
