@@ -23,28 +23,28 @@ INSERT INTO `admin` VALUES (1003, '123456');
 -- ----------------------------
 DROP TABLE IF EXISTS `class_table`;
 CREATE TABLE `class_table`  (
-  `class_id` int NOT NULL DEFAULT 0 COMMENT '课程id',
-  `class_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '课程名称',
-  `class_begin` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '开课时间',
-  `class_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '课程时长',
-  `coach` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '教练',
+  `class_id` int NOT NULL DEFAULT 0 COMMENT '购物车id',
+  `class_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品名称',
+  `class_begin` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '开卡时间',
+  `class_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '保质期',
+  `coach` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '仓库',
   PRIMARY KEY (`class_id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of classtable
 -- ----------------------------
-INSERT INTO `class_table` VALUES (0001, '增肌', '2021年1月1日 15:00', '60分钟', '增肌教练');
-INSERT INTO `class_table` VALUES (0002, '瑜伽', '2021年1月2日 10:20', '90分钟', '瑜伽教练');
-INSERT INTO `class_table` VALUES (0003, '减脂', '2021年3月6日 18:00', '90分钟', '减脂教练');
-INSERT INTO `class_table` VALUES (0004, '运动康复', '2021年2月2日 10:00', '45分钟', '运动康复教练');
-INSERT INTO `class_table` VALUES (0005, '综合格斗', '2021年2月3日 15:00', '60分钟', '综合格斗教练');
-INSERT INTO `class_table` VALUES (0006, '塑形', '2021年2月3日 15:00', '60分钟', '塑形教练');
-INSERT INTO `class_table` VALUES (0007, '普拉提', '2021年3月1日 17:30', '60分钟', '普拉提教练');
-INSERT INTO `class_table` VALUES (0008, '爵士舞', '2021年2月22日 09:00', '90分钟', '爵士舞教练');
-INSERT INTO `class_table` VALUES (0009, '杠铃操', '2021年2月4日 15:00', '60分钟', '杠铃操教练');
-INSERT INTO `class_table` VALUES (0010, '动感单车', '2021年3月8日 15:00', '45分钟', '动感单车教练');
-INSERT INTO `class_table` VALUES (0011, '健美操', '2021年2月22日 18:00', '60分钟', '健美操教练');
+INSERT INTO `class_table` VALUES (0001, '达利园蛋黄派', '2021年1月1日 15:00', '3个月', '仓库1');
+INSERT INTO `class_table` VALUES (0002, '雪碧', '2021年1月2日 10:20', '3个月', '仓库2');
+INSERT INTO `class_table` VALUES (0003, '可乐', '2021年3月6日 18:00', '6个月', '仓库3');
+INSERT INTO `class_table` VALUES (0004, '巧克力', '2021年2月2日 10:00', '3个月', '仓库4');
+INSERT INTO `class_table` VALUES (0005, '苹果', '2021年2月3日 15:00', '3个月', '仓库5');
+INSERT INTO `class_table` VALUES (0006, '西瓜', '2021年2月3日 15:00', '3个月', '仓库6');
+INSERT INTO `class_table` VALUES (0007, '桃子', '2021年3月1日 17:30', '8个月', '仓库6');
+INSERT INTO `class_table` VALUES (0008, '红牛', '2021年2月22日 09:00', '3个月', '仓库6');
+INSERT INTO `class_table` VALUES (0009, '虾条', '2021年2月4日 15:00', '9个月', '仓库6');
+INSERT INTO `class_table` VALUES (0010, '辣条', '2021年3月8日 15:00', '3个月', '仓库7');
+INSERT INTO `class_table` VALUES (0011, '牙刷', '2021年2月22日 18:00', '12个月', '仓库8');
 
 
 -- ----------------------------
@@ -52,30 +52,30 @@ INSERT INTO `class_table` VALUES (0011, '健美操', '2021年2月22日 18:00', '
 -- ----------------------------
 DROP TABLE IF EXISTS `class_order`;
 CREATE TABLE `class_order`  (
-  `class_order_id` int NOT NULL AUTO_INCREMENT COMMENT '报名表id',
-  `class_id` int NULL DEFAULT NULL COMMENT '课程id',
-  `class_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '课程名称',
-  `coach` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '教练',
+  `class_order_id` int NOT NULL AUTO_INCREMENT COMMENT '办卡id',
+  `class_id` int NULL DEFAULT NULL COMMENT '购物车id',
+  `class_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品名称',
+  `coach` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '仓库',
   `member_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '会员姓名',
   `member_account` int NULL DEFAULT NULL COMMENT '会员账号',
-  `class_begin` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '开课时间',
+  `class_begin` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '开卡时间',
   PRIMARY KEY (`class_order_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of classorder
 -- ----------------------------
-INSERT INTO `class_order` VALUES (1, 0002, '瑜伽', '瑜伽教练', '李四', 202100788, '2021年1月2日 10:20');
-INSERT INTO `class_order` VALUES (2, 0002, '瑜伽', '瑜伽教练', '王五', 202132539, '2021年1月2日 10:20');
-INSERT INTO `class_order` VALUES (3, 0004, '运动康复', '运动康复教练', 'Mike', 202156754, '2021年2月2日 10:00');
-INSERT INTO `class_order` VALUES (4, 0001, '增肌', '增肌教练', 'Mike', 202156754, '2021年1月1日 15:00');
-INSERT INTO `class_order` VALUES (5, 0001, '增肌', '增肌教练', 'Tylor', 202183406, '2021年1月1日 15:00');
-INSERT INTO `class_order` VALUES (6, 0002, '瑜伽', '瑜伽教练', 'Tylor', 202183406, '2021年1月2日 10:20');
-INSERT INTO `class_order` VALUES (7, 0001, '增肌', '增肌教练', '李四', 202100788, '2021年1月1日 15:00');
-INSERT INTO `class_order` VALUES (8, 0001, '增肌', '增肌教练', '马六', 202186416, '2021年1月1日 15:00');
-INSERT INTO `class_order` VALUES (9, 0003, '减脂', '减脂教练', '马六', 202186416, '2021年3月6日 18:00');
-INSERT INTO `class_order` VALUES (10, 0003, '减脂', '减脂教练', 'Lily', 202123664, '2021年3月6日 18:00');
-INSERT INTO `class_order` VALUES (11, 0003, '减脂', '减脂教练', 'Emma', 202153468, '2021年3月6日 18:00');
+INSERT INTO `class_order` VALUES (1, 0002, '仓库1', '达利园蛋黄派', '李四', 202100788, '2021年1月2日 10:20');
+INSERT INTO `class_order` VALUES (2, 0002, '仓库3', '雪碧', '王五', 202132539, '2021年1月2日 10:20');
+INSERT INTO `class_order` VALUES (3, 0004, '仓库5', '可乐', 'Mike', 202156754, '2021年2月2日 10:00');
+INSERT INTO `class_order` VALUES (4, 0001, '仓库2', '巧克力', 'Mike', 202156754, '2021年1月1日 15:00');
+INSERT INTO `class_order` VALUES (5, 0001, '仓库10', '苹果', 'Tylor', 202183406, '2021年1月1日 15:00');
+INSERT INTO `class_order` VALUES (6, 0002, '仓库9', '西瓜', 'Tylor', 202183406, '2021年1月2日 10:20');
+INSERT INTO `class_order` VALUES (7, 0001, '仓库8', '桃子', '李四', 202100788, '2021年1月1日 15:00');
+INSERT INTO `class_order` VALUES (8, 0001, '仓库6', '红牛', '马六', 202186416, '2021年1月1日 15:00');
+INSERT INTO `class_order` VALUES (9, 0003, '仓库4', '虾条', '马六', 202186416, '2021年3月6日 18:00');
+INSERT INTO `class_order` VALUES (10, 0003, '仓库6', '辣条', 'Lily', 202123664, '2021年3月6日 18:00');
+INSERT INTO `class_order` VALUES (11, 0003, '仓库8', '牙刷', 'Emma', 202153468, '2021年3月6日 18:00');
 
 
 
@@ -132,10 +132,10 @@ CREATE TABLE `employee`  (
 -- ----------------------------
 -- Records of employee
 -- ----------------------------
-INSERT INTO `employee` VALUES (101038721,  '教练1', '女', 26, '2016-06-29', '健身教练', '健美冠军');
-INSERT INTO `employee` VALUES (101068283,  '教练2', '男', 34, '2020-01-06', '健身教练', '职业教练');
-INSERT INTO `employee` VALUES (101053687,  '教练3', '男', 30, '2020-06-06', '健身教练', '职业教练');
-INSERT INTO `employee` VALUES (101045354,  '教练4', '男', 24, '2021-01-07', '健身教练', '职业教练');
+INSERT INTO `employee` VALUES (101038721,  '导购员1', '女', 26, '2016-06-29', '导购员1', '老司机');
+INSERT INTO `employee` VALUES (101068283,  '导购员2', '男', 34, '2020-01-06', '导购员2', '老师');
+INSERT INTO `employee` VALUES (101053687,  '导购员4', '男', 30, '2020-06-06', '导购员4', '平民');
+INSERT INTO `employee` VALUES (101045354,  '导购员3', '男', 24, '2021-01-07', '导购员3', '职业教练');
 INSERT INTO `employee` VALUES (101058973,  '保洁1', '女', 48, '2019-08-24', '保洁员', '模范员工');
 INSERT INTO `employee` VALUES (101034208,  '保洁2', '女', 48, '2010-08-01', '保洁员', '');
 
@@ -144,24 +144,24 @@ INSERT INTO `employee` VALUES (101034208,  '保洁2', '女', 48, '2010-08-01', '
 -- ----------------------------
 DROP TABLE IF EXISTS `equipment`;
 CREATE TABLE `equipment`  (
-  `equipment_id` int NOT NULL AUTO_INCREMENT COMMENT '器材id',
-  `equipment_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '器材名称',
-  `equipment_location` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '器材位置',
-  `equipment_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '器材状态',
-  `equipment_message` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '器材备注信息',
+  `equipment_id` int NOT NULL AUTO_INCREMENT COMMENT '商品id',
+  `equipment_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品名称',
+  `equipment_location` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品位置',
+  `equipment_status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品状态',
+  `equipment_message` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '商品备注信息',
   PRIMARY KEY (`equipment_id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of equipment
 -- ----------------------------
-INSERT INTO `equipment` VALUES (1, '哑铃1', '1号房间', '正常', '');
-INSERT INTO `equipment` VALUES (2, '杠铃1', '2号房间', '损坏', '待维修');
-INSERT INTO `equipment` VALUES (3, '跑步机1', '2号房间', '维修中', '联系厂家维修');
-INSERT INTO `equipment` VALUES (4, '跑步机2', '2号房间', '正常', '');
-INSERT INTO `equipment` VALUES (5, '跑步机3', '2号房间', '正常', '');
-INSERT INTO `equipment` VALUES (6, '杠铃1', '1号房间', '正常', '');
-INSERT INTO `equipment` VALUES (7, '杠铃2', '1号房间', '正常', '');
+INSERT INTO `equipment` VALUES (1, '雪碧', '1号仓库', '正常', '');
+INSERT INTO `equipment` VALUES (2, '芬达', '2号仓库', '出售', '空');
+INSERT INTO `equipment` VALUES (3, '红牛', '2号仓库', '维修中', '联系厂家维修');
+INSERT INTO `equipment` VALUES (4, '跑步机2', '2号仓库', '正常', '');
+INSERT INTO `equipment` VALUES (5, '跑步机3', '2号仓库', '正常', '');
+INSERT INTO `equipment` VALUES (6, '牙刷', '1号仓库', '正常', '');
+INSERT INTO `equipment` VALUES (7, '杠铃', '1号仓库', '正常', '');
 
 
 
